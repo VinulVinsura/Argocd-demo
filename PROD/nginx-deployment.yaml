@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-nginx-site-deployment
+  namespace: vida-prod
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: demo-nginx-site
+  template:
+    metadata:
+      labels:
+        app: demo-nginx-site
+    spec:
+      containers:
+      - name: user-rg-container 
+        image: vinul16/demo-repo:v3
+        ports:
+        - containerPort: 80
+      imagePullSecrets: 
+      - name: regcred
+
+
+
+
+
+
